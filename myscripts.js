@@ -23,17 +23,18 @@ let humanScore = 0;
 let computerScore = 0;
 
 function playround(computerChoice, humanChoice) {
+  const results = document.querySelector('#result');
   if (computerChoice === humanChoice) {
-    console.log('It\'s a Tie');
+    results.textContent = 'It\'s a Tie';
   }else if (
       (computerChoice === 'scissors' && humanChoice === 'rock') ||
       (computerChoice === 'paper' && humanChoice === 'scissors') ||
       (computerChoice === 'rock' && humanChoice === 'paper')
   ) {
-    console.log(`You Win: ${humanChoice} beats ${computerChoice}`);
+    results.textContent = `You Win: ${humanChoice} beats ${computerChoice}`;
     humanScore ++;
   }else {
-    console.log(`Computer Wins ${computerChoice} beats ${humanChoice}`);
+    results.textContent = `Computer Wins ${computerChoice} beats ${humanChoice}`;
     computerScore ++;
   }
 
@@ -52,6 +53,8 @@ buttons.forEach(button => {
     playround(computerChoice,humanChoice);
   });
 });
+
+
 
 // function playGame () {
 //   for (let round = 0; round < 5; round++) {
