@@ -5,19 +5,19 @@ function getComputerChoice() {
   return computerChose;
 }
 
-function getHumanChoice() {
-  let humanChose = prompt('Choose a weapon: rock, paper, or scissors');
-  if (humanChose === null || humanChose.trim() === '') {
-    alert('Please enter a valid choice');
-    return getHumanChoice(); 
-  }
-  humanChose = humanChose.toLowerCase();
-  if (!CHOICE.includes(humanChose)) {
-    alert('Invalid choice. Please choose rock, paper, or scissors.');
-    return getHumanChoice();
-  }
-  return humanChose;
-}
+// function getHumanChoice() {
+//   let humanChose = prompt('Choose a weapon: rock, paper, or scissors');
+//   if (humanChose === null || humanChose.trim() === '') {
+//     alert('Please enter a valid choice');
+//     return getHumanChoice(); 
+//   }
+//   humanChose = humanChose.toLowerCase();
+//   if (!CHOICE.includes(humanChose)) {
+//     alert('Invalid choice. Please choose rock, paper, or scissors.');
+//     return getHumanChoice();
+//   }
+//   return humanChose;
+// }
 
 let humanScore = 0;
 let computerScore = 0;
@@ -36,22 +36,37 @@ function playround(computerChoice, humanChoice) {
     console.log(`Computer Wins ${computerChoice} beats ${humanChoice}`);
     computerScore ++;
   }
+
+  const computerChoiceDisplay = document.querySelector('#computer');
+  const humanChoiceDisplay = document.querySelector('#player');
+  computerChoiceDisplay.textContent = `Computer chose: ${computerChoice}`;
+  humanChoiceDisplay.textContent = `You chose: ${humanChoice}`;
 }
 
-function playGame () {
-  for (let round = 0; round < 5; round++) {
-    let computer = getComputerChoice();
-    let human = getHumanChoice();
-    playround(computer, human);
-    console.log(`Computer Score: ${computerScore}`);
-    console.log(`Player Score: ${humanScore}`);
-  }
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    const humanChoice = button.textContent.toLowerCase();
+    const computerChoice = getComputerChoice();
+    playround(computerChoice,humanChoice);
+  });
+});
+
+// function playGame () {
+//   for (let round = 0; round < 5; round++) {
+//     let computer = getComputerChoice();
+//     let human = getHumanChoice();
+//     playround(computer, human);
+//     console.log(`Computer Score: ${computerScore}`);
+//     console.log(`Player Score: ${humanScore}`);
+//   }
     
-  if (computerScore > humanScore) {
-      console.log('Computer is the Champion!')
-  }else {
-      console.log('You are the Champion!');
-  }
-}
+//   if (computerScore > humanScore) {
+//       console.log('Computer is the Champion!')
+//   }else {
+//       console.log('You are the Champion!');
+//   }
+// }
     
-playGame();
+// playGame();
