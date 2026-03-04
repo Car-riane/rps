@@ -4,7 +4,7 @@ A browser-based Rock Paper Scissors game built with vanilla HTML and JavaScript.
 
 ## Live Demo
 
-> _Add your GitHub Pages link here_
+> https://car-riane.github.io/rps/
 
 ---
 
